@@ -42,22 +42,22 @@ class Aoe_Scheduler_Block_Adminhtml_Cron_Grid extends Mage_Adminhtml_Block_Widge
 	protected function _prepareMassaction() {
 		$this->setMassactionIdField('id');
 		$this->getMassactionBlock()->setFormFieldName('codes');
-		$this->getMassactionBlock()->addItem('schedule', array(
-			'label'         => Mage::helper('aoe_scheduler')->__('Schedule now'),
-			'url'           => $this->getUrl('*/*/scheduleNow'),
-		));
+//		$this->getMassactionBlock()->addItem('schedule', array(
+//			'label'         => Mage::helper('aoe_scheduler')->__('Schedule now'),
+//			'url'           => $this->getUrl('*/*/scheduleNow'),
+//		));
 		$this->getMassactionBlock()->addItem('run', array(
 			'label'    => Mage::helper('aoe_scheduler')->__('Run now'),
 			'url'      => $this->getUrl('*/*/runNow'),
 		));
-		$this->getMassactionBlock()->addItem('disable', array(
-			'label'    => Mage::helper('aoe_scheduler')->__('Disable'),
-			'url'      => $this->getUrl('*/*/disable'),
-		));
-		$this->getMassactionBlock()->addItem('enable', array(
-			'label'    => Mage::helper('aoe_scheduler')->__('Enable'),
-			'url'      => $this->getUrl('*/*/enable'),
-		));
+//		$this->getMassactionBlock()->addItem('disable', array(
+//			'label'    => Mage::helper('aoe_scheduler')->__('Disable'),
+//			'url'      => $this->getUrl('*/*/disable'),
+//		));
+//		$this->getMassactionBlock()->addItem('enable', array(
+//			'label'    => Mage::helper('aoe_scheduler')->__('Enable'),
+//			'url'      => $this->getUrl('*/*/enable'),
+//		));
 		return $this;
 	}
 

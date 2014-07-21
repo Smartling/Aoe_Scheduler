@@ -20,11 +20,31 @@ class Aoe_Scheduler_Model_Collection_Crons extends Varien_Data_Collection {
 		if ($this->_dataLoaded) {
 			return $this;
 		}
+                
+                $specialModule = 'Smartling_Connector';
+                
+                if(Mage::getConfig()->getModuleConfig($specialModule)->is('active', 'true')) {
+                
+                    $configFile = Mage::getConfig()->getModuleDir('etc', $specialModule).DS.'config.xml';
 
-		foreach ($this->getAllCodes() as $code) {
-			$configuration = Mage::getModel('aoe_scheduler/configuration')->loadByCode($code);
-			$this->addItem($configuration);
-		}
+                    $sxe =  simplexml_load_file($configFile); 
+
+                    foreach($sxe->xpath('//config/crontab/jobs') as $item) { 
+
+                        $tasks = json_decode(json_encode((array)simplexml_load_string($item->asXML())),1);
+
+                        foreach($tasks as $code => $taskSettings) {
+                            $configuration = Mage::getModel('aoe_scheduler/configuration')->loadByCode($code);
+                            $this->addItem($configuration);
+                        }
+                    } 
+
+                } else {
+                    foreach ($this->getAllCodes() as $code) {
+                            $configuration = Mage::getModel('aoe_scheduler/configuration')->loadByCode($code);
+                            $this->addItem($configuration);
+                    }
+                }
 
 		$this->_dataLoaded = true;
 		return $this;

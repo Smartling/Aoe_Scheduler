@@ -13,7 +13,7 @@ abstract class Aoe_Scheduler_Adminhtml_AbstractController extends Mage_Adminhtml
 	 * @return void
 	 */
 	public function indexAction() {
-		$this->checkHeartbeat();
+		//$this->checkHeartbeat();
 
 		$this->loadLayout();
 
