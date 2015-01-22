@@ -105,7 +105,9 @@ class Aoe_Scheduler_Adminhtml_CronController extends Aoe_Scheduler_Adminhtml_Abs
 
 			}
 		}
-		$this->_redirect('*/*/index');
+		if(headers_sent() === false) {
+			$this->_redirect('*/*/index');
+			}
 	}
 
 }
